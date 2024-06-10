@@ -1,0 +1,17 @@
+name: Trigger Workflow on Submodule Changes
+
+on:
+  repository_dispatch:
+    types: [trigger-umbrella-workflow]
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Auto Merge Workflow
+        run: |
+          git fetch origin
+          git checkout main
+          git pull origin main
+          git commit --allow-empty -m "Trigger workflow due to submodule changes"
+          git push origin main

@@ -1,0 +1,59 @@
+name: Auto Merge Release Branches and Notify
+
+on:
+  push:
+    branches:
+      - 'release/**'
+      - 'main'
+
+jobs:
+  announce-on-release:
+    name: Announce Deploy to Slack for Release Branch
+    environment: Staging
+    if: ${{ github.ref != 'refs/heads/main' && contains(github.ref, 'release') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Announce to Slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: ${{ github.actor }}
+          text: "There is a deployment to *${{ github.ref }}* underway :oooo:"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  announce-on-main-merge:
+    name: Announce Merge to Main on Slack
+    environment: Production
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Announce to Slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: ${{ github.actor }}
+          text: "A release branch has just been merged to *main* :tada:"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  merge-to-staging:
+    runs-on: ubuntu-latest
+    environment: Staging
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Fetch all history for all tags and branches
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Merge release branch to staging
+        run: |
+          git fetch origin
+          git checkout staging
+          git merge ${{ github.ref }} --no-ff -m "Merging release branch ${{ github.ref }} into staging"
+          git push origin staging
