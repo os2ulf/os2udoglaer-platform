@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/os2ulf/os2udoglaer.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/os2ulf/os2udoglaer-frontend.git
