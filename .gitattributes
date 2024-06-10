@@ -1,0 +1,9 @@
+# Set the default behavior to automatically normalize line endings.
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted to LF upon checkout.
+*.yaml text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+*.js text eol=lf
+*.php text eol=lf
