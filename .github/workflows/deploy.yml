@@ -23,7 +23,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   announce-on-main-merge:
-    name: Announce Merge to Main on Slack
+    name: Announce Merge to Main on Slack channel
     environment: Production
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
@@ -54,7 +54,7 @@ jobs:
         run: |
           git fetch origin
           git checkout staging
-          git merge ${{ github.ref }} --no-ff -m "Merging release branch ${{ github.ref }} into staging"
+          git merge --allow-unrelated-histories ${{ github.ref }} --no-ff -m "Merging release branch ${{ github.ref }} into staging"
           git push -u origin staging
 
   deploy-to-production:
@@ -74,5 +74,5 @@ jobs:
         run: |
           git fetch origin
           git checkout main
-          git merge ${{ github.ref }} --no-ff -m "Merging main into production"
+          git merge --allow-unrelated-histories ${{ github.ref }} --no-ff -m "Merging main into production"
           git push -u origin main
