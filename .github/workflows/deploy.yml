@@ -23,7 +23,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 
   announce-on-main-merge:
-    name: Announce Merge to Main on Slack
+    name: Announce Merge to Main on Slack channel
     environment: Production
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
