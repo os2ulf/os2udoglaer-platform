@@ -14,4 +14,4 @@ jobs:
           git checkout main
           git pull origin main
           git commit --allow-empty -m "Trigger workflow due to submodule changes"
-          git push origin main
+          git push -u origin main
