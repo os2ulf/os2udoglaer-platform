@@ -33,3 +33,4 @@ solr:
         endpoints:
             main:
                 core: os2uol
+
