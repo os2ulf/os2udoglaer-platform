@@ -1,0 +1,35 @@
+name: Update Submodules
+
+on:
+  repository_dispatch:
+    types:
+      - update-submodule
+
+jobs:
+  update_submodule:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          ref: ${{ github.event.client_payload.branch }}
+
+      - name: Identify the submodule to update
+        id: submodule
+        run: |
+          echo "SUBMODULE=${{ github.event.client_payload.submodule }}" >> $GITHUB_ENV
+          echo "BRANCH=${{ github.event.client_payload.branch }}" >> $GITHUB_ENV
+          echo "COMMIT=${{ github.event.client_payload.commit }}" >> $GITHUB_ENV
+
+      - name: Update submodule
+        run: |
+          git config --file=.gitmodules submodule.${SUBMODULE}.branch ${BRANCH}
+          git submodule update --remote -- ${SUBMODULE}
+          cd ${SUBMODULE}
+          git checkout ${COMMIT}
+          cd -
+          git add ${SUBMODULE}
+          git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${BRANCH}"
+          git push origin ${BRANCH}
