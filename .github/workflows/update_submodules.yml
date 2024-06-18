@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Log Payload
+        run: |
+          echo "Received Payload:"
+          echo "Submodule: ${{ github.event.client_payload.submodule }}"
+          echo "Branch: ${{ github.event.client_payload.branch }}"
+          echo "Commit: ${{ github.event.client_payload.commit }}"
+
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
@@ -25,6 +32,7 @@ jobs:
 
       - name: Update submodule
         run: |
+        run: |
           git config --file=.gitmodules submodule.${SUBMODULE}.branch ${BRANCH}
           git submodule update --remote -- ${SUBMODULE}
           cd ${SUBMODULE}
@@ -33,3 +41,5 @@ jobs:
           git add ${SUBMODULE}
           git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${BRANCH}"
           git push origin ${BRANCH}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
