@@ -3,35 +3,230 @@
 # Each route describes how an incoming URL is going
 # to be processed by Platform.sh.
 
-# Frontend routes
+# Default
 "https://{default}/":
-    type: upstream
-    upstream: "frontend:http"
-    cache:
-      enabled: true
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
-      # Base the cache on the session cookie and custom Drupal cookies. Ignore all other cookies.
-      cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+"https://api.{default}/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.{default}/":
     type: redirect
     to: "https://{default}/"
 
-"https://*.dk":
-    type: upstream
-    upstream: "frontend:http"
-    cache:
-      enabled: true
+# Ulfiaarhus
+"https://ulfiaarhus.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
-      # Base the cache on the session cookie and custom Drupal cookies. Ignore all other cookies.
-      cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+"https://api.ulfiaarhus.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
-# Backend routes
-"https://api.*.dk/":
-    type: upstream
-    upstream: "backend:http"
-    cache:
-      enabled: true
+"https://www.ulfiaarhus.dk/":
+    type: redirect
+    to: "https://ulfiaarhus.dk/"
 
-      # Base the cache on the session cookie and custom Drupal cookies. Ignore all other cookies.
-      cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+# Mitvadehav
+"https://mitvadehav.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.mitvadehav.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.mitvadehav.dk/":
+    type: redirect
+    to: "https://mitvadehav.dk/"
+
+# Aabenaalborg
+"https://aabenaalborg.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.aabenaalborg.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.aabenaalborg.dk/":
+    type: redirect
+    to: "https://aabenaalborg.dk/"
+
+# Klcviborg
+"https://klcviborg.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.klcviborg.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.klcviborg.dk/":
+    type: redirect
+    to: "https://klcviborg.dk/"
+
+# Laeringsportalenskive
+"https://laeringsportalenskive.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.laeringsportalenskive.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.laeringsportalenskive.dk/":
+    type: redirect
+    to: "https://laeringsportalenskive.dk/"
+
+# RUM Thisted
+"https://rum.thisted.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.rum.thisted.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.rum.thisted.dk/":
+    type: redirect
+    to: "https://rum.thisted.dk/"
+
+# Udoglaer Randers
+"https://udoglaer.randers.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.udoglaer.randers.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.udoglaer.randers.dk/":
+    type: redirect
+    to: "https://udoglaer.randers.dk/"
+
+# Udoglaer Vejle
+"https://udoglaer.vejle.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.udoglaer.vejle.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.udoglaer.vejle.dk/":
+    type: redirect
+    to: "https://udoglaer.vejle.dk/"
+
+# Ude NU!
+"https://ude.nu/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.ude.nu/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.ude.nu/":
+    type: redirect
+    to: "https://ude.nu/"
+
+# Ungegarantien
+"https://ungegarantien.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.ungegarantien.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.ungegarantien.dk/":
+    type: redirect
+    to: "https://ungegarantien.dk/"
+
+# Udsynsmodarbejdsliv
+"https://udsynmodarbejdsliv.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://api.udsynmodarbejdsliv.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
+"https://www.udsynmodarbejdsliv.dk/":
+    type: redirect
+    to: "https://udsynmodarbejdsliv.dk/"
