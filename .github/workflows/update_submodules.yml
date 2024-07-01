@@ -33,6 +33,8 @@ jobs:
       - name: Update submodule
         run: |
           git config --file=.gitmodules submodule.${SUBMODULE}.branch ${BRANCH}
+          git config --user.name "GitHub Actions"
+          git config --user.email "support@novicell.dk"
           git submodule update --remote -- ${SUBMODULE}
           cd ${SUBMODULE}
           git checkout ${COMMIT}
