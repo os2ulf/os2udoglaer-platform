@@ -2,8 +2,7 @@ name: Update Submodules
 
 on:
   repository_dispatch:
-    types:
-      - update-submodule
+    types: [update-submodule]
 
 jobs:
   update_submodule:
@@ -31,7 +30,6 @@ jobs:
           echo "COMMIT=${{ github.event.client_payload.commit }}" >> $GITHUB_ENV
 
       - name: Update submodule
-        run: |
         run: |
           git config --file=.gitmodules submodule.${SUBMODULE}.branch ${BRANCH}
           git submodule update --remote -- ${SUBMODULE}
