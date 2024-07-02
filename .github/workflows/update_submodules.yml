@@ -14,8 +14,7 @@ jobs:
           echo "Received Payload:"
           echo "================="
           echo "Submodule: ${{ github.event.client_payload.submodule }}"
-          echo "Branch To: ${{ github.event.client_payload.branch_to }}"
-          echo "Branch From: ${{ github.event.client_payload.branch_from }}"
+          echo "Environment: ${{ github.event.client_payload.environment }}"
           echo "Commit: ${{ github.event.client_payload.commit }}"
 
       - name: Checkout Repo
@@ -29,13 +28,16 @@ jobs:
         id: submodule
         run: |
           echo "SUBMODULE=${{ github.event.client_payload.submodule }}" >> $GITHUB_ENV
-          echo "BRANCH_TO=${{ github.event.client_payload.branch_to }}" >> $GITHUB_ENV
-          echo "BRANCH_FROM=${{ github.event.client_payload.branch_from }}" >> $GITHUB_ENV
           echo "COMMIT=${{ github.event.client_payload.commit }}" >> $GITHUB_ENV
+          # If the environment payload is production, we are going to main branch, else we are going to develop branch
+          if [[ ${{ github.event.client_payload.environment }} == "production" ]]; then
+            echo "TARGET_BRANCH=main" >> $GITHUB_ENV
+          else
+            echo "TARGET_BRANCH=develop" >> $GITHUB_ENV
+          fi
 
       - name: Update submodule
         run: |
-          git config --file=.gitmodules submodule.${SUBMODULE}.branch ${BRANCH_FROM}
           git config --global user.name "GitHub Actions"
           git config --global user.email "support@novicell.dk"
           git submodule update --remote -- ${SUBMODULE}
@@ -43,7 +45,7 @@ jobs:
           git checkout ${COMMIT}
           cd -
           git add ${SUBMODULE}
-          git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${BRANCH_TO}"
-          git push origin ${BRANCH_TO}
+          git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${TARGET_BRANCH}"
+          git push origin ${TARGET_BRANCH}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
