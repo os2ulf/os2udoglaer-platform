@@ -12,8 +12,10 @@ jobs:
       - name: Log Payload
         run: |
           echo "Received Payload:"
+          echo "================="
           echo "Submodule: ${{ github.event.client_payload.submodule }}"
-          echo "Branch: ${{ github.event.client_payload.branch }}"
+          echo "Branch To: ${{ github.event.client_payload.branch_to }}"
+          echo "Branch From: ${{ github.event.client_payload.branch_from }}"
           echo "Commit: ${{ github.event.client_payload.commit }}"
 
       - name: Checkout Repo
@@ -27,12 +29,13 @@ jobs:
         id: submodule
         run: |
           echo "SUBMODULE=${{ github.event.client_payload.submodule }}" >> $GITHUB_ENV
-          echo "BRANCH=${{ github.event.client_payload.branch }}" >> $GITHUB_ENV
+          echo "BRANCH_TO=${{ github.event.client_payload.branch_to }}" >> $GITHUB_ENV
+          echo "BRANCH_FROM=${{ github.event.client_payload.branch_from }}" >> $GITHUB_ENV
           echo "COMMIT=${{ github.event.client_payload.commit }}" >> $GITHUB_ENV
 
       - name: Update submodule
         run: |
-          git config --file=.gitmodules submodule.${SUBMODULE}.branch ${BRANCH}
+          git config --file=.gitmodules submodule.${SUBMODULE}.branch ${BRANCH_FROM}
           git config --global user.name "GitHub Actions"
           git config --global user.email "support@novicell.dk"
           git submodule update --remote -- ${SUBMODULE}
@@ -40,7 +43,7 @@ jobs:
           git checkout ${COMMIT}
           cd -
           git add ${SUBMODULE}
-          git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${BRANCH}"
-          git push origin ${BRANCH}
+          git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${BRANCH_TO}"
+          git push origin ${BRANCH_TO}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
