@@ -2,34 +2,50 @@ name: Update Submodules
 
 on:
   repository_dispatch:
-    types:
-      - update-submodule
+    types: [update-submodule]
 
 jobs:
   update_submodule:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Log Payload
+        run: |
+          echo "Received Payload:"
+          echo "================="
+          echo "Submodule: ${{ github.event.client_payload.submodule }}"
+          echo "Environment: ${{ github.event.client_payload.environment }}"
+          echo "Commit: ${{ github.event.client_payload.commit }}"
+
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
           submodules: true
+          fetch-depth: 0
           ref: ${{ github.event.client_payload.branch }}
 
       - name: Identify the submodule to update
         id: submodule
         run: |
           echo "SUBMODULE=${{ github.event.client_payload.submodule }}" >> $GITHUB_ENV
-          echo "BRANCH=${{ github.event.client_payload.branch }}" >> $GITHUB_ENV
           echo "COMMIT=${{ github.event.client_payload.commit }}" >> $GITHUB_ENV
+          # If the environment payload is production, we are going to main branch, else we are going to develop branch
+          if [[ ${{ github.event.client_payload.environment }} == "production" ]]; then
+            echo "TARGET_BRANCH=main" >> $GITHUB_ENV
+          else
+            echo "TARGET_BRANCH=develop" >> $GITHUB_ENV
+          fi
 
       - name: Update submodule
         run: |
-          git config --file=.gitmodules submodule.${SUBMODULE}.branch ${BRANCH}
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "support@novicell.dk"
           git submodule update --remote -- ${SUBMODULE}
           cd ${SUBMODULE}
           git checkout ${COMMIT}
           cd -
           git add ${SUBMODULE}
-          git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${BRANCH}"
-          git push origin ${BRANCH}
+          git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${TARGET_BRANCH}"
+          git push origin ${TARGET_BRANCH}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
