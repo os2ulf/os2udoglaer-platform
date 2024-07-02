@@ -17,13 +17,6 @@ jobs:
           echo "Environment: ${{ github.event.client_payload.environment }}"
           echo "Commit: ${{ github.event.client_payload.commit }}"
 
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-        with:
-          submodules: true
-          fetch-depth: 0
-          ref: ${{ github.event.client_payload.branch }}
-
       - name: Identify the submodule to update
         id: submodule
         run: |
@@ -35,6 +28,13 @@ jobs:
           else
             echo "TARGET_BRANCH=develop" >> $GITHUB_ENV
           fi
+
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+          ref: ${TARGET_BRANCH}
 
       - name: Update submodule
         run: |
