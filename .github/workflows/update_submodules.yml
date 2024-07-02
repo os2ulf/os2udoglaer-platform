@@ -17,6 +17,13 @@ jobs:
           echo "Environment: ${{ github.event.client_payload.environment }}"
           echo "Commit: ${{ github.event.client_payload.commit }}"
 
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+          ref: main
+
       - name: Identify the submodule to update
         id: submodule
         run: |
@@ -29,23 +36,25 @@ jobs:
             echo "TARGET_BRANCH=develop" >> $GITHUB_ENV
           fi
 
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-        with:
-          submodules: true
-          fetch-depth: 0
-          ref: ${TARGET_BRANCH}
-
       - name: Update submodule
         run: |
+          # Checkout the target branch in the platform repo
+          git checkout ${TARGET_BRANCH}
+          # Setup the configuration for the git user
           git config --global user.name "GitHub Actions"
           git config --global user.email "support@novicell.dk"
+          # Update the submodule
           git submodule update --remote -- ${SUBMODULE}
+          # Enter the submodule
           cd ${SUBMODULE}
+          # Checkout submodule to commit hash
           git checkout ${COMMIT}
           cd -
+          # Add the submodule changes
           git add ${SUBMODULE}
+          # Commit the submodule changes
           git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${TARGET_BRANCH}"
+          # Push the submodule changes
           git push origin ${TARGET_BRANCH}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
