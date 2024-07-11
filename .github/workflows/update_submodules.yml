@@ -33,7 +33,7 @@ jobs:
           if [[ ${{ github.event.client_payload.environment }} == "production" ]]; then
             echo "TARGET_BRANCH=main" >> $GITHUB_ENV
           else
-            echo "TARGET_BRANCH=develop" >> $GITHUB_ENV
+            echo "TARGET_BRANCH=staging" >> $GITHUB_ENV
           fi
 
       - name: Update submodule
