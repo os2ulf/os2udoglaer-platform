@@ -22,6 +22,14 @@
     type: redirect
     to: "https://{default}/"
 
+# Databrønden
+"https://api.os2udoglaer.dk/":
+  type: upstream
+  upstream: "backend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
 # Ulfiaarhus
 "https://ulfiaarhus.dk/":
   type: upstream
