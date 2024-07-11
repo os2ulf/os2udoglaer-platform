@@ -6,7 +6,7 @@
 # Default
 "https://{default}/":
   type: upstream
-  upstream: "frontend:http"
+  upstream: "backend:http"
   cache:
     enabled: true
     cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
