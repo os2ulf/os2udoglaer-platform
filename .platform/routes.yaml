@@ -38,16 +38,19 @@
     enabled: true
     cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
+"https://www.ulfiaarhus.dk/":
+  type: upstream
+  upstream: "frontend:http"
+  cache:
+    enabled: true
+    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
+
 "https://api.ulfiaarhus.dk/":
   type: upstream
   upstream: "backend:http"
   cache:
     enabled: true
     cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
-
-"https://www.ulfiaarhus.dk/":
-    type: redirect
-    to: "https://ulfiaarhus.dk/"
 
 # Mitvadehav
 "https://mitvadehav.dk/":
