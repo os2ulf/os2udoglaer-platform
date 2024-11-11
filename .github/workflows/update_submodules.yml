@@ -47,16 +47,6 @@ jobs:
           echo "Environment: ${{ github.event.client_payload.environment }}"
           echo "Commit: ${{ github.event.client_payload.commit }}"
 
-
-      - name: Announce to slack
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          author_name: ${{ github.actor }}
-          text: "Received Payload: \n Submodule: ${{ github.event.client_payload.submodule }} \n Environment: ${{ github.event.client_payload.environment }} \n Commit: ${{ github.event.client_payload.commit }}"
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
