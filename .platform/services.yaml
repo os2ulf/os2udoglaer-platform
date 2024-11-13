@@ -5,7 +5,7 @@ db:
     # when choosing a version. If you specify a version number which is not available,
     # the CLI will return an error.
     type: 'mariadb:11.2'
-    disk: 8192
+    disk: 16384
     configuration:
         properties:
             default_charset: utf8mb4
@@ -25,7 +25,7 @@ solr:
     # when choosing a version. If you specify a version number which is not available,
     # the CLI will return an error.
     type: 'solr:9.4'
-    disk: 1024
+    disk: 2048
     configuration:
         cores:
             os2uol:
