@@ -161,20 +161,18 @@
 "https://udoglaer.vejle.dk/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.udoglaer.vejle.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.udoglaer.vejle.dk/":
     type: redirect
     to: "https://udoglaer.vejle.dk/"
+
+"https://api-staging.udoglaer.vejle.dk/":
+  type: upstream
+  upstream: "backend:http"
 
 # Ude NU!
 "https://ude.nu/":
