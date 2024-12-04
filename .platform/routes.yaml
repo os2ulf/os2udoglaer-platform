@@ -170,6 +170,10 @@
     type: redirect
     to: "https://udoglaer.vejle.dk/"
 
+"https://api-staging.udoglaer.vejle.dk/":
+  type: upstream
+  upstream: "backend:http"
+
 # Ude NU!
 "https://ude.nu/":
   type: upstream
