@@ -14,7 +14,7 @@
 
 "https://www.{default}/":
   type: redirect
-   to: "https://{default}/"
+  to: "https://{default}/"
 
 # Databrønden
 "https://api.os2udoglaer.dk/":
