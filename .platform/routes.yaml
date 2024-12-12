@@ -4,17 +4,9 @@
 # to be processed by Platform.sh.
 
 # Default
-"https://{default}/":
-  type: upstream
-  upstream: "frontend:http"
-
 "https://api.{default}/":
   type: upstream
   upstream: "backend:http"
-
-"https://www.{default}/":
-  type: redirect
-  to: "https://{default}/"
 
 # Databrønden
 "https://api.os2udoglaer.dk/":
