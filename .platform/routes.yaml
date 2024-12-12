@@ -7,16 +7,10 @@
 "https://{default}/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.{default}/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.{default}/":
     type: redirect
@@ -26,9 +20,6 @@
 "https://api.os2udoglaer.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 # Ulfiaarhus
 "https://ulfiaarhus.dk/":
@@ -47,16 +38,10 @@
 "https://mitvadehav.dk/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.mitvadehav.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.mitvadehav.dk/":
     type: redirect
@@ -66,16 +51,10 @@
 "https://aabenaalborg.dk/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.aabenaalborg.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.aabenaalborg.dk/":
     type: redirect
@@ -85,16 +64,10 @@
 "https://klcviborg.dk/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.klcviborg.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.klcviborg.dk/":
     type: redirect
@@ -104,16 +77,10 @@
 "https://laeringsportalenskive.dk/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.laeringsportalenskive.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.laeringsportalenskive.dk/":
     type: redirect
@@ -123,16 +90,10 @@
 "https://rum.thisted.dk/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.rum.thisted.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.rum.thisted.dk/":
     type: redirect
@@ -142,16 +103,10 @@
 "https://udoglaer.randers.dk/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.udoglaer.randers.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.udoglaer.randers.dk/":
     type: redirect
@@ -178,16 +133,10 @@
 "https://ude.nu/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.ude.nu/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.ude.nu/":
     type: redirect
@@ -197,16 +146,10 @@
 "https://ungegarantien.dk/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.ungegarantien.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.ungegarantien.dk/":
     type: redirect
@@ -216,16 +159,10 @@
 "https://udsynmodarbejdsliv.dk/":
   type: upstream
   upstream: "frontend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://api.udsynmodarbejdsliv.dk/":
   type: upstream
   upstream: "backend:http"
-  cache:
-    enabled: true
-    cookies: ['/^SS?ESS/', '/^Drupal.visitor/']
 
 "https://www.udsynmodarbejdsliv.dk/":
     type: redirect
