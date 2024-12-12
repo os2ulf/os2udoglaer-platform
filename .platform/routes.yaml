@@ -13,8 +13,8 @@
   upstream: "backend:http"
 
 "https://www.{default}/":
-    type: redirect
-    to: "https://{default}/"
+  type: redirect
+   to: "https://{default}/"
 
 # Databrønden
 "https://api.os2udoglaer.dk/":
@@ -44,8 +44,8 @@
   upstream: "backend:http"
 
 "https://www.mitvadehav.dk/":
-    type: redirect
-    to: "https://mitvadehav.dk/"
+  type: redirect
+  to: "https://mitvadehav.dk/"
 
 # Aabenaalborg
 "https://aabenaalborg.dk/":
@@ -57,8 +57,8 @@
   upstream: "backend:http"
 
 "https://www.aabenaalborg.dk/":
-    type: redirect
-    to: "https://aabenaalborg.dk/"
+  type: redirect
+  to: "https://aabenaalborg.dk/"
 
 # Klcviborg
 "https://klcviborg.dk/":
@@ -70,8 +70,8 @@
   upstream: "backend:http"
 
 "https://www.klcviborg.dk/":
-    type: redirect
-    to: "https://klcviborg.dk/"
+  type: redirect
+  to: "https://klcviborg.dk/"
 
 # Laeringsportalenskive
 "https://laeringsportalenskive.dk/":
@@ -83,8 +83,8 @@
   upstream: "backend:http"
 
 "https://www.laeringsportalenskive.dk/":
-    type: redirect
-    to: "https://laeringsportalenskive.dk/"
+  type: redirect
+  to: "https://laeringsportalenskive.dk/"
 
 # RUM Thisted
 "https://rum.thisted.dk/":
@@ -96,8 +96,8 @@
   upstream: "backend:http"
 
 "https://www.rum.thisted.dk/":
-    type: redirect
-    to: "https://rum.thisted.dk/"
+  type: redirect
+  to: "https://rum.thisted.dk/"
 
 # Udoglaer Randers
 "https://udoglaer.randers.dk/":
@@ -109,8 +109,8 @@
   upstream: "backend:http"
 
 "https://www.udoglaer.randers.dk/":
-    type: redirect
-    to: "https://udoglaer.randers.dk/"
+  type: redirect
+  to: "https://udoglaer.randers.dk/"
 
 # Udoglaer Vejle
 "https://udoglaer.vejle.dk/":
@@ -122,8 +122,8 @@
   upstream: "backend:http"
 
 "https://www.udoglaer.vejle.dk/":
-    type: redirect
-    to: "https://udoglaer.vejle.dk/"
+  type: redirect
+  to: "https://udoglaer.vejle.dk/"
 
 "https://api-staging.udoglaer.vejle.dk/":
   type: upstream
@@ -139,8 +139,8 @@
   upstream: "backend:http"
 
 "https://www.ude.nu/":
-    type: redirect
-    to: "https://ude.nu/"
+  type: redirect
+  to: "https://ude.nu/"
 
 # Ungegarantien
 "https://ungegarantien.dk/":
@@ -152,8 +152,8 @@
   upstream: "backend:http"
 
 "https://www.ungegarantien.dk/":
-    type: redirect
-    to: "https://ungegarantien.dk/"
+  type: redirect
+  to: "https://ungegarantien.dk/"
 
 # Udsynsmodarbejdsliv
 "https://udsynmodarbejdsliv.dk/":
@@ -165,5 +165,5 @@
   upstream: "backend:http"
 
 "https://www.udsynmodarbejdsliv.dk/":
-    type: redirect
-    to: "https://udsynmodarbejdsliv.dk/"
+  type: redirect
+  to: "https://udsynmodarbejdsliv.dk/"
