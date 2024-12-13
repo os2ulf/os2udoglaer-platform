@@ -100,10 +100,6 @@
   type: upstream
   upstream: "backend:http"
 
-"https://www.udoglaer.randers.dk/":
-  type: redirect
-  to: "https://udoglaer.randers.dk/"
-
 # Udoglaer Vejle
 "https://udoglaer.vejle.dk/":
   type: upstream
