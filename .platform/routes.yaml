@@ -122,13 +122,13 @@
   type: upstream
   upstream: "frontend:http"
 
-"https://api.ude.nu/":
+"https://www.ude.nu/":
+  type: upstream
+  upstream: "frontend:http"
+
+"https://api.ude.nu":
   type: upstream
   upstream: "backend:http"
-
-"https://www.ude.nu/":
-  type: redirect
-  to: "https://ude.nu/"
 
 # Ungegarantien
 "https://ungegarantien.dk/":
