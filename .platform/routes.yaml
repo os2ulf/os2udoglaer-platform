@@ -70,13 +70,13 @@
   type: upstream
   upstream: "frontend:http"
 
+"https://www.laeringsportalenskive.dk/":
+  type: upstream
+  upstream: "frontend:http"
+
 "https://api.laeringsportalenskive.dk/":
   type: upstream
   upstream: "backend:http"
-
-"https://www.laeringsportalenskive.dk/":
-  type: redirect
-  to: "https://laeringsportalenskive.dk/"
 
 # RUM Thisted
 "https://rum.thisted.dk/":
