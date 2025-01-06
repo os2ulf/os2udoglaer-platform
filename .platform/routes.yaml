@@ -71,8 +71,8 @@
   upstream: "frontend:http"
 
 "https://www.laeringsportalenskive.dk/":
-  type: redirect
-  to: "https://laeringsportalenskive.dk/"
+  type: upstream
+  upstream: "frontend:http"
 
 "https://api.laeringsportalenskive.dk/":
   type: upstream
