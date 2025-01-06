@@ -68,7 +68,7 @@
 # Laeringsportalenskive
 "https://laeringsportalenskive.dk/":
   type: redirect
-  to: "https://laeringsportalenskive.dk/"
+  to: "https://www.laeringsportalenskive.dk/"
 
 "https://www.laeringsportalenskive.dk/":
   type: upstream
