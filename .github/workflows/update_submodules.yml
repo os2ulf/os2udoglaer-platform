@@ -5,36 +5,6 @@ on:
     types: [update-submodule]
 
 jobs:
-  announce-on-release:
-    name: Announce Deploy to Slack for Release Branch
-    environment: Staging
-    if: ${{ github.ref != 'refs/heads/main' && contains(github.ref, 'release/') }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Announce to Slack
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          author_name: ${{ github.actor }}
-          text: "There is a deployment to *${{ github.ref }}* underway :cat-roomba-exceptionally-fast:"
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
-  announce-on-main-merge:
-    name: Announce Merge to Main on Slack channel
-    environment: Production
-    if: ${{ github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Announce to Slack
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          author_name: ${{ github.actor }}
-          text: "A release branch has just been merged to *main* :tada:"
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-
   update_submodule:
     runs-on: ubuntu-latest
 
@@ -46,6 +16,15 @@ jobs:
           echo "Submodule: ${{ github.event.client_payload.submodule }}"
           echo "Environment: ${{ github.event.client_payload.environment }}"
           echo "Commit: ${{ github.event.client_payload.commit }}"
+
+      - name: Slack
+        run: |
+          # If environment is production.
+          if [[ ${{ github.event.client_payload.environment }} == "production" ]]; then
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Deploy of *${{ github.event.client_payload.submodule }}* to *production*"}' ${{ secrets.SLACK_WEBHOOK_URL }}
+          else
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Deploy of *${{ github.event.client_payload.submodule }}* to *staging*"}' ${{ secrets.SLACK_WEBHOOK_URL }}
+          fi
 
       - name: Checkout Repo
         uses: actions/checkout@v2
