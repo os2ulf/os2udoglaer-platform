@@ -18,14 +18,25 @@ jobs:
           echo "Environment: ${{ github.event.client_payload.environment }}"
           echo "Commit: ${{ github.event.client_payload.commit }}"
 
-      - name: Slack
-        run: |
-          # If environment is production.
-          if [[ ${{ github.event.client_payload.environment }} == "production" ]]; then
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Deploy of *${{ github.event.client_payload.submodule }}* to *production*"}' ${{ secrets.SLACK_WEBHOOK_URL }}
-          else
-            curl -X POST -H 'Content-type: application/json' --data '{"text":"Deploy of *${{ github.event.client_payload.submodule }}* to *staging*"}' ${{ secrets.SLACK_WEBHOOK_URL }}
-          fi
+      - name: Announce to Slack (Production)
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: ${{ github.actor }}
+          text: "There is a deployment of *${{ github.event.client_payload.submodule }}* to *production* underway :tada:"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: ${{ github.event.client_payload.environment == 'production' }}
+
+      - name: Announce to Slack (Staging)
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: ${{ github.actor }}
+          text: "There is a deployment of *${{ github.event.client_payload.submodule }}* to *staging* underway :rocket:"
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: ${{ github.event.client_payload.environment == 'staging' }}
 
       - name: Checkout Repo
         uses: actions/checkout@v2
