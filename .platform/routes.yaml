@@ -144,7 +144,7 @@
   to: "https://ungegarantien.dk/"
 
 # Udsynsmodarbejdsliv
-"https://udsynmodarbejdsliv.dk/":
+"https://www.udsynmodarbejdsliv.dk/":
   type: upstream
   upstream: "frontend:http"
 
@@ -152,6 +152,6 @@
   type: upstream
   upstream: "backend:http"
 
-"https://www.udsynmodarbejdsliv.dk/":
+"https://udsynmodarbejdsliv.dk/":
   type: redirect
-  to: "https://udsynmodarbejdsliv.dk/"
+  to: "https://www.udsynmodarbejdsliv.dk/"
