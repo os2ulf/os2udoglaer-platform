@@ -27,7 +27,7 @@
   upstream: "backend:http"
 
 # Mitvadehav
-"https://mitvadehav.dk/":
+"https://www.mitvadehav.dk/":
   type: upstream
   upstream: "frontend:http"
 
@@ -35,9 +35,9 @@
   type: upstream
   upstream: "backend:http"
 
-"https://www.mitvadehav.dk/":
+"https://mitvadehav.dk/":
   type: redirect
-  to: "https://mitvadehav.dk/"
+  to: "https://www.mitvadehav.dk/"
 
 # Aabenaalborg
 "https://aabenaalborg.dk/":
