@@ -130,19 +130,6 @@
   type: upstream
   upstream: "backend:http"
 
-# Ungegarantien
-"https://ungegarantien.dk/":
-  type: upstream
-  upstream: "frontend:http"
-
-"https://api.ungegarantien.dk/":
-  type: upstream
-  upstream: "backend:http"
-
-"https://www.ungegarantien.dk/":
-  type: redirect
-  to: "https://ungegarantien.dk/"
-
 # Udsynsmodarbejdsliv
 "https://www.udsynmodarbejdsliv.dk/":
   type: upstream
