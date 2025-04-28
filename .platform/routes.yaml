@@ -79,7 +79,7 @@
   upstream: "backend:http"
 
 # RUM Thisted
-"https://rum.thisted.dk/":
+"https://rumthisted.dk/":
   type: upstream
   upstream: "frontend:http"
 
@@ -87,9 +87,9 @@
   type: upstream
   upstream: "backend:http"
 
-"https://www.rum.thisted.dk/":
+"https://www.rumthisted.dk/":
   type: redirect
-  to: "https://rum.thisted.dk/"
+  to: "https://rumthisted.dk/"
 
 # Udoglaer Randers
 "https://udoglaer.randers.dk/":
