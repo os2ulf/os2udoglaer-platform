@@ -83,7 +83,7 @@
   type: upstream
   upstream: "frontend:http"
 
-"https://api.rum.thisted.dk/":
+"https://api.rumthisted.dk/":
   type: upstream
   upstream: "backend:http"
 
