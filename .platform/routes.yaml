@@ -91,6 +91,10 @@
   type: redirect
   to: "https://www.rumthisted.dk/"
 
+"https://rum.thisted.dk/":
+  type: redirect
+  to: "https://www.rumthisted.dk/"
+
 # Udoglaer Randers
 "https://udoglaer.randers.dk/":
   type: upstream
