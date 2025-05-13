@@ -27,7 +27,7 @@
   upstream: "backend:http"
 
 # Mitvadehav
-"https://mitvadehav.dk/":
+"https://www.mitvadehav.dk/":
   type: upstream
   upstream: "frontend:http"
 
@@ -35,9 +35,9 @@
   type: upstream
   upstream: "backend:http"
 
-"https://www.mitvadehav.dk/":
+"https://mitvadehav.dk/":
   type: redirect
-  to: "https://mitvadehav.dk/"
+  to: "https://www.mitvadehav.dk/"
 
 # Aabenaalborg
 "https://aabenaalborg.dk/":
@@ -79,21 +79,21 @@
   upstream: "backend:http"
 
 # RUM Thisted
-"https://rumthisted.dk/":
-  type: upstream
-  upstream: "frontend:http"
-
 "https://api.rumthisted.dk/":
   type: upstream
   upstream: "backend:http"
 
 "https://www.rumthisted.dk/":
+  type: upstream
+  upstream: "frontend:http"
+
+"https://rumthisted.dk/":
   type: redirect
-  to: "https://rumthisted.dk/"
+  to: "https://www.rumthisted.dk/"
 
 "https://rum.thisted.dk/":
   type: redirect
-  to: "https://rumthisted.dk/"
+  to: "https://www.rumthisted.dk/"
 
 # Udoglaer Randers
 "https://udoglaer.randers.dk/":
@@ -135,7 +135,7 @@
   upstream: "backend:http"
 
 # Udsynsmodarbejdsliv
-"https://udsynmodarbejdsliv.dk/":
+"https://www.udsynmodarbejdsliv.dk/":
   type: upstream
   upstream: "frontend:http"
 
@@ -143,6 +143,6 @@
   type: upstream
   upstream: "backend:http"
 
-"https://www.udsynmodarbejdsliv.dk/":
+"https://udsynmodarbejdsliv.dk/":
   type: redirect
-  to: "https://udsynmodarbejdsliv.dk/"
+  to: "https://www.udsynmodarbejdsliv.dk/"
