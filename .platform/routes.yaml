@@ -150,3 +150,16 @@
 "https://udsynmodarbejdsliv.dk/":
   type: redirect
   to: "https://www.udsynmodarbejdsliv.dk/"
+
+# Roskilde Kommune
+"https://udoglaer.roskilde.dk/":
+  type: upstream
+  upstream: "frontend:http"
+
+"https://api.udoglaer.roskilde.dk/":
+  type: upstream
+  upstream: "backend:http"
+
+"https://www.udoglaer.roskilde.dk/":
+  type: redirect
+  to: "https://udoglaer.roskilde.dk/"
