@@ -163,3 +163,16 @@
 "https://www.roskilde.os2udoglaer.dk/":
   type: redirect
   to: "https://roskilde.os2udoglaer.dk/"
+
+# Syddjurs Kommune
+"https://syddjurs.os2udoglaer.dk/":
+  type: upstream
+  upstream: "frontend:http"
+
+"https://api.syddjurs.os2udoglaer.dk/":
+  type: upstream
+  upstream: "backend:http"
+
+"https://www.syddjurs.os2udoglaer.dk/":
+  type: redirect
+  to: "https://syddjurs.os2udoglaer.dk/"
