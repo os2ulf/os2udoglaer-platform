@@ -164,6 +164,18 @@
   type: redirect
   to: "https://roskilde.os2udoglaer.dk/"
 
+"https://taetpaadig.roskilde.dk/":
+  type: upstream
+  upstream: "frontend:http"
+
+"https://api.taetpaadig.roskilde.dk/":
+  type: upstream
+  upstream: "backend:http"
+
+"https://www.taetpaadig.roskilde.dk/":
+  type: redirect
+  to: "https://taetpaadig.roskilde.dk/"
+
 # Syddjurs Kommune
 "https://syddjurs.os2udoglaer.dk/":
   type: upstream
