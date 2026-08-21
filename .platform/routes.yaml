@@ -185,6 +185,10 @@
   type: upstream
   upstream: "backend:http"
 
+"https://api.xn--udoglrsyddjurs-4ib.dk/":
+  type: upstream
+  upstream: "backend:http"
+
 "https://www.udoglærsyddjurs.dk/":
   type: redirect
   to: "https://udoglærsyddjurs.dk/"
