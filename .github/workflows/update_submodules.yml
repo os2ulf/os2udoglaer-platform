@@ -73,6 +73,11 @@ jobs:
           cd -
           # Add the submodule changes
           git add ${SUBMODULE}
+          # Repeated dispatches may already point to the requested commit.
+          if git diff --cached --quiet; then
+            echo "${SUBMODULE} already points to ${COMMIT} on ${TARGET_BRANCH}; nothing to update."
+            exit 0
+          fi
           # Commit the submodule changes
           git commit -m "Updated ${SUBMODULE} submodule to commit ${COMMIT} on branch ${TARGET_BRANCH}"
           # Push the submodule changes
